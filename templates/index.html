@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseIQ — Cardiovascular Disease Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-noise"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">PulseIQ</span>
+                    <span class="logo-tag">Cardiovascular AI</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="#how-it-works">How it works</a>
+                <a href="#technology">Technology</a>
+                <a href="#assessment" class="btn-nav">
+                    <i class="fa-solid fa-stethoscope"></i>
+                    Start Assessment
+                </a>
+            </div>
+            <button class="nav-toggle" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#how-it-works" onclick="toggleMenu()">How it works</a>
+            <a href="#technology" onclick="toggleMenu()">Technology</a>
+            <a href="#assessment" onclick="toggleMenu()">Start Assessment</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="container hero-inner">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    AI-Powered Cardiac Risk Analysis
+                </div>
+                <h1 class="hero-title">
+                    Know Your Heart.<br>
+                    <span class="highlight">Before It Speaks.</span>
+                </h1>
+                <p class="hero-desc">
+                    PulseIQ uses a stacking ensemble of three machine learning models to analyze 13 clinical biomarkers and predict your cardiovascular disease risk with clinical-grade accuracy.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="scrollToAssessment()">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        Run Free Assessment
+                    </button>
+                    <a href="#how-it-works" class="btn-ghost">
+                        How it works
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-num">13</span>
+                        <span class="stat-label">Biomarkers Analyzed</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-num">3</span>
+                        <span class="stat-label">ML Models Stacked</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-num">&lt;2s</span>
+                        <span class="stat-label">Result Time</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <div class="pulse-ring">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <div>
+                                <p class="card-label">Live Analysis</p>
+                                <p class="card-sublabel">Ensemble Model Active</p>
+                            </div>
+                        </div>
+                        <span class="status-dot"></span>
+                    </div>
+                    <div class="ecg-container">
+                        <svg class="ecg-line" viewBox="0 0 300 80" preserveAspectRatio="none">
+                            <polyline points="0,40 30,40 45,40 50,10 55,70 60,40 90,40 105,40 110,15 115,65 120,40 150,40 165,40 170,12 175,68 180,40 210,40 225,40 230,14 235,66 240,40 270,40 300,40" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Risk Score</span>
+                            <span class="metric-val low">Low</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Confidence</span>
+                            <span class="metric-val">98.2%</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Models</span>
+                            <span class="metric-val">3 Active</span>
+                        </div>
+                    </div>
+                    <div class="card-footer-bar">
+                        <div class="bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-how">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-tag">Simple Process</p>
+                <h2>Three Steps to Clarity</h2>
+                <p class="section-sub">No lab visit needed. Enter your clinical data and get an AI-powered risk assessment in seconds.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h3>Enter Your Data</h3>
+                    <p>Fill in 13 clinical parameters across three guided steps — demographics, vitals, and ECG results.</p>
+                </div>
+                <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>AI Processes</h3>
+                    <p>Three ML models — Logistic Regression, Random Forest, and XGBoost — analyze your data simultaneously.</p>
+                </div>
+                <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h3>Get Your Result</h3>
+                    <p>Receive a clear risk percentage with actionable guidance — all in under 2 seconds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology -->
+    <section id="technology" class="section-tech">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-tag">Under the Hood</p>
+                <h2>Clinical-Grade Technology</h2>
+                <p class="section-sub">Built on peer-reviewed ML techniques used in cardiovascular research.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon red">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <h3>Stacking Ensemble</h3>
+                    <p>Combines predictions from Logistic Regression, Random Forest, and XGBoost using a meta-learner for superior accuracy over any single model.</p>
+                    <div class="tech-tag">Core Architecture</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon blue">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3>Calibrated Threshold</h3>
+                    <p>Uses a tuned decision threshold of 0.4 (instead of default 0.5) to prioritize sensitivity — catching more true positives in a medical context.</p>
+                    <div class="tech-tag">Risk Optimization</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon green">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3>Cleveland Dataset</h3>
+                    <p>Trained on the UCI Cleveland Heart Disease dataset — one of the most cited cardiovascular datasets in ML research with 303 patient records.</p>
+                    <div class="tech-tag">Data Foundation</div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon purple">
+                        <i class="fa-solid fa-arrows-to-dot"></i>
+                    </div>
+                    <h3>Feature Scaling</h3>
+                    <p>All 13 input features are normalized using StandardScaler before inference, ensuring consistent model behavior across different patient profiles.</p>
+                    <div class="tech-tag">Preprocessing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Tool -->
+    <section id="assessment" class="section-assessment">
+        <div class="container">
+            <div class="section-head">
+                <p class="section-tag">Free Assessment</p>
+                <h2>Start Your Cardiac Analysis</h2>
+                <p class="section-sub">Complete all three steps. Your data is processed locally and never stored.</p>
+            </div>
+
+            <div class="tool-wrapper">
+                <!-- Sidebar -->
+                <div class="tool-sidebar">
+                    <p class="sidebar-label">Progress</p>
+                    <div class="sidebar-steps">
+                        <div class="s-step active" id="s-step-1">
+                            <div class="s-dot"><i class="fa-solid fa-user"></i></div>
+                            <div class="s-info">
+                                <span class="s-title">Patient Profile</span>
+                                <span class="s-sub">Age & Sex</span>
+                            </div>
+                        </div>
+                        <div class="s-line"></div>
+                        <div class="s-step" id="s-step-2">
+                            <div class="s-dot"><i class="fa-solid fa-droplet"></i></div>
+                            <div class="s-info">
+                                <span class="s-title">Vitals & Labs</span>
+                                <span class="s-sub">BP, Cholesterol, HR</span>
+                            </div>
+                        </div>
+                        <div class="s-line"></div>
+                        <div class="s-step" id="s-step-3">
+                            <div class="s-dot"><i class="fa-solid fa-wave-square"></i></div>
+                            <div class="s-info">
+                                <span class="s-title">Clinical Exam</span>
+                                <span class="s-sub">ECG & Stress Test</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar-disclaimer">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <p>This tool is for informational purposes only. Always consult a qualified physician.</p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="tool-form">
+                    <form id="pulseForm" onsubmit="return false;">
+
+                        <!-- Step 1 -->
+                        <div class="f-step active" id="step-1">
+                            <div class="f-step-head">
+                                <h3>Patient Profile</h3>
+                                <p>Basic demographic information</p>
+                            </div>
+                            <div class="f-grid">
+                                <div class="f-field">
+                                    <label for="age">
+                                        <i class="fa-solid fa-calendar"></i>
+                                        Patient Age
+                                    </label>
+                                    <input type="number" id="age" placeholder="e.g. 52" min="1" max="120" required>
+                                    <span class="f-hint">Years (1–120)</span>
+                                </div>
+                                <div class="f-field">
+                                    <label for="sex">
+                                        <i class="fa-solid fa-venus-mars"></i>
+                                        Biological Sex
+                                    </label>
+                                    <select id="sex">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="f-footer">
+                                <div></div>
+                                <button class="btn-next" onclick="nextStep(2)">
+                                    Next: Vitals
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="f-step" id="step-2">
+                            <div class="f-step-head">
+                                <h3>Vitals & Blood Work</h3>
+                                <p>Key physiological measurements from your last checkup</p>
+                            </div>
+                            <div class="f-grid">
+                                <div class="f-field">
+                                    <label for="trestbps">
+                                        <i class="fa-solid fa-gauge-high"></i>
+                                        Resting Blood Pressure
+                                    </label>
+                                    <input type="number" id="trestbps" placeholder="120" required>
+                                    <span class="f-hint">mm Hg at rest</span>
+                                </div>
+                                <div class="f-field">
+                                    <label for="chol">
+                                        <i class="fa-solid fa-vial"></i>
+                                        Serum Cholesterol
+                                    </label>
+                                    <input type="number" id="chol" placeholder="200" required>
+                                    <span class="f-hint">mg/dl</span>
+                                </div>
+                                <div class="f-field">
+                                    <label for="thalach">
+                                        <i class="fa-solid fa-heart-pulse"></i>
+                                        Max Heart Rate Achieved
+                                    </label>
+                                    <input type="number" id="thalach" placeholder="150" required>
+                                    <span class="f-hint">bpm during stress test</span>
+                                </div>
+                                <div class="f-field">
+                                    <label for="fbs">
+                                        <i class="fa-solid fa-cookie-bite"></i>
+                                        Fasting Blood Sugar &gt; 120 mg/dl
+                                    </label>
+                                    <select id="fbs">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="f-footer">
+                                <button class="btn-back" onclick="prevStep(1)">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    Back
+                                </button>
+                                <button class="btn-next" onclick="nextStep(3)">
+                                    Next: Clinical Exam
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="f-step" id="step-3">
+                            <div class="f-step-head">
+                                <h3>Clinical Evaluation</h3>
+                                <p>ECG findings and stress test parameters</p>
+                            </div>
+                            <div class="f-grid">
+                                <div class="f-field">
+                                    <label for="cp">
+                                        <i class="fa-solid fa-lungs"></i>
+                                        Chest Pain Type
+                                    </label>
+                                    <select id="cp">
+                                        <option value="0">Typical Angina</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-anginal Pain</option>
+                                        <option value="3">Asymptomatic</option>
+                                    </select>
+                                </div>
+                                <div class="f-field">
+                                    <label for="restecg">
+                                        <i class="fa-solid fa-wave-square"></i>
+                                        Resting ECG Results
+                                    </label>
+                                    <select id="restecg">
+                                        <option value="0">Normal</option>
+                                        <option value="1">ST-T Wave Abnormality</option>
+                                        <option value="2">Left Ventricular Hypertrophy</option>
+                                    </select>
+                                </div>
+                                <div class="f-field">
+                                    <label for="exang">
+                                        <i class="fa-solid fa-person-running"></i>
+                                        Exercise Induced Angina
+                                    </label>
+                                    <select id="exang">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="f-field">
+                                    <label for="oldpeak">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                        ST Depression (Oldpeak)
+                                    </label>
+                                    <input type="number" step="0.1" id="oldpeak" placeholder="1.0" required>
+                                    <span class="f-hint">Induced by exercise vs rest</span>
+                                </div>
+                                <div class="f-field">
+                                    <label for="slope">
+                                        <i class="fa-solid fa-arrow-trend-up"></i>
+                                        ST Segment Slope
+                                    </label>
+                                    <select id="slope">
+                                        <option value="0">Upsloping</option>
+                                        <option value="1">Flat</option>
+                                        <option value="2">Downsloping</option>
+                                    </select>
+                                </div>
+                                <div class="f-field">
+                                    <label for="ca">
+                                        <i class="fa-solid fa-microscope"></i>
+                                        Major Vessels (Fluoroscopy)
+                                    </label>
+                                    <select id="ca">
+                                        <option value="0">0 vessels colored</option>
+                                        <option value="1">1 vessel colored</option>
+                                        <option value="2">2 vessels colored</option>
+                                        <option value="3">3 vessels colored</option>
+                                    </select>
+                                </div>
+                                <div class="f-field f-full">
+                                    <label for="thal">
+                                        <i class="fa-solid fa-dna"></i>
+                                        Thalassemia
+                                    </label>
+                                    <select id="thal">
+                                        <option value="3">Normal</option>
+                                        <option value="6">Fixed Defect</option>
+                                        <option value="7">Reversible Defect</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="f-footer">
+                                <button class="btn-back" onclick="prevStep(2)">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                    Back
+                                </button>
+                                <button class="btn-submit" onclick="submitData()">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    Run Analysis
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <!-- Result Panel -->
+                    <div id="result-panel" class="result-panel hidden">
+                        <div class="result-inner">
+                            <div class="result-icon" id="res-icon">
+                                <div class="spinner"></div>
+                            </div>
+                            <h2 id="res-title">Analyzing biomarkers...</h2>
+                            <p id="res-desc">Running ensemble model across 13 clinical parameters.</p>
+
+                            <div class="risk-meter">
+                                <div class="risk-track">
+                                    <div class="risk-fill" id="risk-fill"></div>
+                                </div>
+                                <div class="risk-labels">
+                                    <span>Low Risk</span>
+                                    <span>High Risk</span>
+                                </div>
+                            </div>
+
+                            <div class="risk-percent" id="res-percent">—</div>
+                            <p class="risk-label" id="risk-label">Cardiovascular Risk Score</p>
+
+                            <div class="result-actions">
+                                <button class="btn-primary" onclick="resetTool()">
+                                    <i class="fa-solid fa-rotate-left"></i>
+                                    New Assessment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-name">PulseIQ</span>
+                        <span class="logo-tag">Cardiovascular AI</span>
+                    </div>
+                </div>
+                <p class="footer-desc">AI-powered cardiovascular risk prediction. For informational purposes only — not a substitute for professional medical advice.</p>
+            </div>
+            <div class="footer-links">
+                <p class="footer-col-title">Navigation</p>
+                <a href="#home">Home</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#technology">Technology</a>
+                <a href="#assessment">Assessment</a>
+            </div>
+            <div class="footer-links">
+                <p class="footer-col-title">Connect</p>
+                <a href="#"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PulseIQ. Built with Python, Flask &amp; Scikit-learn.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
