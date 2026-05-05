@@ -228,7 +228,7 @@
                             <div class="s-dot"><i class="fa-solid fa-user"></i></div>
                             <div class="s-info">
                                 <span class="s-title">Patient Profile</span>
-                                <span class="s-sub">Age & Sex</span>
+                                <span class="s-sub">Age, Sex & Chest Pain</span>
                             </div>
                         </div>
                         <div class="s-line"></div>
@@ -236,21 +236,21 @@
                             <div class="s-dot"><i class="fa-solid fa-droplet"></i></div>
                             <div class="s-info">
                                 <span class="s-title">Vitals & Labs</span>
-                                <span class="s-sub">BP, Cholesterol, HR</span>
+                                <span class="s-sub">BP, Cholesterol, Heart Rate</span>
                             </div>
                         </div>
                         <div class="s-line"></div>
                         <div class="s-step" id="s-step-3">
                             <div class="s-dot"><i class="fa-solid fa-wave-square"></i></div>
                             <div class="s-info">
-                                <span class="s-title">Clinical Exam</span>
+                                <span class="s-title">Clinical Evaluation</span>
                                 <span class="s-sub">ECG & Stress Test</span>
                             </div>
                         </div>
                     </div>
                     <div class="sidebar-disclaimer">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <p>This tool is for informational purposes only. Always consult a qualified physician.</p>
+                        <p>Haven't had certain tests? Each field has a hint explaining what it means and what to enter if you don't have the value. Always consult a qualified physician for a real diagnosis.</p>
                     </div>
                 </div>
 
@@ -271,7 +271,7 @@
                                         Patient Age
                                     </label>
                                     <input type="number" id="age" placeholder="e.g. 52" min="1" max="120" required>
-                                    <span class="f-hint">Years (1–120)</span>
+                                    <span class="f-hint">Your current age in years (1–120)</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="sex">
@@ -282,12 +282,26 @@
                                         <option value="1">Male</option>
                                         <option value="0">Female</option>
                                     </select>
+                                    <span class="f-hint">Select your biological sex at birth</span>
+                                </div>
+                                <div class="f-field f-full">
+                                    <label for="cp">
+                                        <i class="fa-solid fa-lungs"></i>
+                                        Chest Pain Type
+                                    </label>
+                                    <select id="cp">
+                                        <option value="3">Asymptomatic — No chest pain at all</option>
+                                        <option value="0">Typical Angina — Pressure or tightness in chest during physical activity, relieved by rest</option>
+                                        <option value="1">Atypical Angina — Chest discomfort that doesn't follow the typical pattern (e.g. occurs at rest)</option>
+                                        <option value="2">Non-anginal Pain — Chest pain clearly not related to the heart (e.g. muscle pain, acid reflux)</option>
+                                    </select>
+                                    <span class="f-hint">If you have no chest pain or discomfort of any kind, select Asymptomatic. If unsure, consult your doctor's notes.</span>
                                 </div>
                             </div>
                             <div class="f-footer">
                                 <div></div>
                                 <button class="btn-next" onclick="nextStep(2)">
-                                    Next: Vitals
+                                    Next: Vitals & Labs
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
@@ -297,7 +311,7 @@
                         <div class="f-step" id="step-2">
                             <div class="f-step-head">
                                 <h3>Vitals & Blood Work</h3>
-                                <p>Key physiological measurements from your last checkup</p>
+                                <p>Values from your last blood test or routine checkup report</p>
                             </div>
                             <div class="f-grid">
                                 <div class="f-field">
@@ -305,24 +319,24 @@
                                         <i class="fa-solid fa-gauge-high"></i>
                                         Resting Blood Pressure
                                     </label>
-                                    <input type="number" id="trestbps" placeholder="120" required>
-                                    <span class="f-hint">mm Hg at rest</span>
+                                    <input type="number" id="trestbps" placeholder="120" min="80" max="250" required>
+                                    <span class="f-hint">In mm Hg — the top number on your BP reading taken while sitting at rest. Normal range: 90–120. Found on any BP report or home BP monitor.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="chol">
                                         <i class="fa-solid fa-vial"></i>
                                         Serum Cholesterol
                                     </label>
-                                    <input type="number" id="chol" placeholder="200" required>
-                                    <span class="f-hint">mg/dl</span>
+                                    <input type="number" id="chol" placeholder="200" min="100" max="600" required>
+                                    <span class="f-hint">In mg/dl — total cholesterol from your blood test (lipid profile report). Desirable: below 200. Borderline high: 200–239. High: 240+.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="thalach">
                                         <i class="fa-solid fa-heart-pulse"></i>
-                                        Max Heart Rate Achieved
+                                        Maximum Heart Rate Achieved
                                     </label>
-                                    <input type="number" id="thalach" placeholder="150" required>
-                                    <span class="f-hint">bpm during stress test</span>
+                                    <input type="number" id="thalach" placeholder="150" min="60" max="220" required>
+                                    <span class="f-hint">Highest heart rate (bpm) reached during exercise or a stress test. If you don't know, estimate using: 220 − your age. E.g. age 45 → enter 175.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="fbs">
@@ -330,9 +344,10 @@
                                         Fasting Blood Sugar &gt; 120 mg/dl
                                     </label>
                                     <select id="fbs">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
+                                        <option value="0">No — fasting blood sugar is 120 mg/dl or below (normal)</option>
+                                        <option value="1">Yes — fasting blood sugar is above 120 mg/dl (elevated / diabetic range)</option>
                                     </select>
+                                    <span class="f-hint">Fasting blood sugar = glucose level after not eating for 8+ hours. Found on your blood test report under "FBS" or "Fasting Glucose". Normal is below 100 mg/dl; diabetic range is above 126 mg/dl. If you are diabetic or your FBS is above 120, select Yes.</span>
                                 </div>
                             </div>
                             <div class="f-footer">
@@ -351,31 +366,20 @@
                         <div class="f-step" id="step-3">
                             <div class="f-step-head">
                                 <h3>Clinical Evaluation</h3>
-                                <p>ECG findings and stress test parameters</p>
+                                <p>ECG and stress test findings — if you haven't had these tests, use the default (first) option for each field</p>
                             </div>
                             <div class="f-grid">
-                                <div class="f-field">
-                                    <label for="cp">
-                                        <i class="fa-solid fa-lungs"></i>
-                                        Chest Pain Type
-                                    </label>
-                                    <select id="cp">
-                                        <option value="0">Typical Angina</option>
-                                        <option value="1">Atypical Angina</option>
-                                        <option value="2">Non-anginal Pain</option>
-                                        <option value="3">Asymptomatic</option>
-                                    </select>
-                                </div>
                                 <div class="f-field">
                                     <label for="restecg">
                                         <i class="fa-solid fa-wave-square"></i>
                                         Resting ECG Results
                                     </label>
                                     <select id="restecg">
-                                        <option value="0">Normal</option>
-                                        <option value="1">ST-T Wave Abnormality</option>
-                                        <option value="2">Left Ventricular Hypertrophy</option>
+                                        <option value="0">Normal — no abnormalities detected</option>
+                                        <option value="1">ST-T Wave Abnormality — changes in ST segment or T wave (indicates possible ischemia)</option>
+                                        <option value="2">Left Ventricular Hypertrophy — thickening of the heart's main pumping chamber wall</option>
                                     </select>
+                                    <span class="f-hint">ECG (Electrocardiogram) records the electrical activity of your heart. Result is printed on your ECG report. If you've never had an ECG, select Normal.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="exang">
@@ -383,51 +387,55 @@
                                         Exercise Induced Angina
                                     </label>
                                     <select id="exang">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
+                                        <option value="0">No — no chest pain or discomfort during physical activity</option>
+                                        <option value="1">Yes — chest pain, tightness or pressure appears during exercise or exertion</option>
                                     </select>
+                                    <span class="f-hint">Angina is chest discomfort caused by reduced blood flow to the heart during physical effort. If you can exercise, climb stairs, or walk briskly without any chest discomfort, select No.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="oldpeak">
                                         <i class="fa-solid fa-chart-line"></i>
                                         ST Depression (Oldpeak)
                                     </label>
-                                    <input type="number" step="0.1" id="oldpeak" placeholder="1.0" required>
-                                    <span class="f-hint">Induced by exercise vs rest</span>
+                                    <input type="number" step="0.1" id="oldpeak" placeholder="0.0" min="0" max="10" required>
+                                    <span class="f-hint">A numeric value from your stress test or exercise ECG report, labeled as "ST depression" or "Oldpeak". Measures how much the ST segment dips during exercise vs. rest. Range: 0–6.2. If you have no stress test report, enter 0.</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="slope">
                                         <i class="fa-solid fa-arrow-trend-up"></i>
-                                        ST Segment Slope
+                                        Slope of Peak Exercise ST Segment
                                     </label>
                                     <select id="slope">
-                                        <option value="0">Upsloping</option>
-                                        <option value="1">Flat</option>
-                                        <option value="2">Downsloping</option>
+                                        <option value="0">Upsloping — ST segment rises during exercise (normal / healthy pattern)</option>
+                                        <option value="1">Flat — ST segment stays level during exercise (mildly abnormal)</option>
+                                        <option value="2">Downsloping — ST segment drops during exercise (abnormal, higher risk)</option>
                                     </select>
+                                    <span class="f-hint">The direction of the ST segment on your exercise ECG / stress test report. If you haven't had a stress test, select Upsloping (normal default).</span>
                                 </div>
                                 <div class="f-field">
                                     <label for="ca">
                                         <i class="fa-solid fa-microscope"></i>
-                                        Major Vessels (Fluoroscopy)
+                                        Major Vessels Colored by Fluoroscopy
                                     </label>
                                     <select id="ca">
-                                        <option value="0">0 vessels colored</option>
-                                        <option value="1">1 vessel colored</option>
-                                        <option value="2">2 vessels colored</option>
-                                        <option value="3">3 vessels colored</option>
+                                        <option value="0">0 — No vessels colored (no blockages found, or test not done)</option>
+                                        <option value="1">1 — One major vessel colored (mild blockage)</option>
+                                        <option value="2">2 — Two major vessels colored (moderate blockage)</option>
+                                        <option value="3">3 — Three major vessels colored (severe blockage)</option>
                                     </select>
+                                    <span class="f-hint">From a coronary angiography or cardiac catheterization report — shows how many of the 3 main heart arteries have significant narrowing. If you haven't had this procedure, select 0.</span>
                                 </div>
                                 <div class="f-field f-full">
                                     <label for="thal">
                                         <i class="fa-solid fa-dna"></i>
-                                        Thalassemia
+                                        Thalassemia (Nuclear Stress Test Result)
                                     </label>
                                     <select id="thal">
-                                        <option value="3">Normal</option>
-                                        <option value="6">Fixed Defect</option>
-                                        <option value="7">Reversible Defect</option>
+                                        <option value="3">Normal — normal blood flow to the heart in all conditions</option>
+                                        <option value="6">Fixed Defect — permanently reduced blood flow to part of the heart (scar tissue from past heart attack)</option>
+                                        <option value="7">Reversible Defect — blood flow is reduced during stress but returns to normal at rest (indicates active ischemia)</option>
                                     </select>
+                                    <span class="f-hint">From a nuclear stress test (thallium/sestamibi scan) or thalassemia blood disorder screening. This test shows how well blood reaches different parts of your heart. If you haven't had this test, select Normal.</span>
                                 </div>
                             </div>
                             <div class="f-footer">
