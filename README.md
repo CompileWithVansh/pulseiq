@@ -2,7 +2,7 @@
 
 > AI-powered heart disease risk assessment using a stacking ensemble of three machine learning models.
 
-Built by **Manvendra Singh**
+Built by **Vansh Gupta**
 
 ---
 Deployment Url : https://pulseiq-yvyl.onrender.com 
